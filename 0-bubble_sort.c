@@ -21,15 +21,25 @@ void bubble_sort(int *array, size_t size)
 
 			if (array[i] > x)
 			{
-				hold = array[i];
-				array[i] = x;
 				if (array[i + 1] != '\0')
 				{
-					array[i + 1] = hold;
+					hold = array[i + 1];
+					array[i + 1] = array[i];
+					array[i] = hold;
 				}
 				print_array(array, size);
-				bubble_sort(array, size);
-				break;
+			}
+		}
+	}
+
+	for (i = 0; i < size; i++)
+	{
+		if (array[i + 1] != '\0')
+		{
+			if (array[i + 1] < array [i])
+			{
+			bubble_sort(array, size);
+			break;
 			}
 		}
 	}
