@@ -1,4 +1,5 @@
 #include "sort.h"
+#include <stdio.h>
 
 /**
  * bubble_sort - sorts array bubble wise
@@ -17,14 +18,19 @@ void bubble_sort(int *array, size_t size)
 	{
 		if (array[i + 1] != '\0')
 		{
-			x = array[i] + 1;
+			x = array[i + 1];
 
 			if (array[i] > x)
 			{
 				hold = array[i];
 				array[i] = x;
-				x = hold;
+				if (array[i + 1] != '\0')
+				{
+					array[i + 1] = hold;
+				}
 				print_array(array, size);
+				bubble_sort(array, size);
+				break;
 			}
 		}
 	}
