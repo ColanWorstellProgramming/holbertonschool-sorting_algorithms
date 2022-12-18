@@ -15,36 +15,33 @@ void bubble_sort(int *array, size_t size)
 
 	if (size > 1)
 	{
-		if (array[i] =! NULL)
+		for (i = 0; i < size; i++)
 		{
-			for (i = 0; i < size; i++)
+			if (array[i + 1] != '\0')
 			{
-				if (array[i + 1] != '\0')
-				{
-					x = array[i + 1];
+				x = array[i + 1];
 
-					if (array[i] > x)
+				if (array[i] > x)
+				{
+					if (array[i + 1] != '\0')
 					{
-						if (array[i + 1] != '\0')
-						{
-							hold = array[i + 1];
-							array[i + 1] = array[i];
-							array[i] = hold;
-						}
-						print_array(array, size);
+						hold = array[i + 1];
+						array[i + 1] = array[i];
+						array[i] = hold;
 					}
+					print_array(array, size);
 				}
 			}
+		}
 
-			for (i = 0; i < size; i++)
+		for (i = 0; i < size; i++)
+		{
+			if (array[i + 1] != '\0')
 			{
-				if (array[i + 1] != '\0')
+				if (array[i + 1] < array[i])
 				{
-					if (array[i + 1] < array[i])
-					{
-						bubble_sort(array, size);
-						break;
-					}
+					bubble_sort(array, size);
+					break;
 				}
 			}
 		}
