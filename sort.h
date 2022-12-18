@@ -22,7 +22,7 @@ typedef struct listint_s
 	struct listint_s *next;
 } listint_t;
 
-/*
+/**
  * Prototypes
  */
 
