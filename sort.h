@@ -1,6 +1,5 @@
 #ifndef H
 #define H
-#undef H
 
 /**
  * Includes
