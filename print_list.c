@@ -5,6 +5,7 @@
  * print_list - Prints a list of integers
  *
  * @list: The list to be printed
+ * Return: Void
  */
 void print_list(const listint_t *list)
 {

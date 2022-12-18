@@ -6,6 +6,7 @@
  *
  * @array: The array to be printed
  * @size: Number of elements in @array
+ * Return: void
  */
 void print_array(const int *array, size_t size)
 {
