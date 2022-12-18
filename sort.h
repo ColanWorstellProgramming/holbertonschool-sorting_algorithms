@@ -2,7 +2,7 @@
 #define H
 #undef H
 
-/**
+/*
  * Includes
  */
 
