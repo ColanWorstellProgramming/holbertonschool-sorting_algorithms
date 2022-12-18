@@ -14,6 +14,7 @@
  * @n: Integer stored in the node
  * @prev: Pointer to the previous element of the list
  * @next: Pointer to the next element of the list
+ * Description: struct
  */
 typedef struct listint_s
 {
@@ -22,7 +23,7 @@ typedef struct listint_s
 	struct listint_s *next;
 } listint_t;
 
-/**
+/*
  * Prototypes
  */
 
