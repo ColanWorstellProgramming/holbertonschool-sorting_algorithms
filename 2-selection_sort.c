@@ -14,14 +14,14 @@ void selection_sort(int *array, size_t size)
 	int swap = 0;
 	int count = -1;
 	size_t x = 0;
-	int check = 0;
+	int flag = 0;
 
 	if (!array || size < 2)
 		return;
 
 	while (x < size)
 	{
-		for (i = 0; i < size; i++)
+		for (i = x; i < size; i++)
 		{
 			swap = swap + array[i];
 		}
@@ -33,21 +33,18 @@ void selection_sort(int *array, size_t size)
 				count = i;
 			}
 		}
-		if (count != check)
+		if (count != -1)
 		{
-			if (count != -1)
-			{
-				array[count] = array[x];
-				array[x] = swap;
-				if (x != size - 1)
-					print_array(array, size);
-				x++;
-			}
+			if (array[count] == array[x])
+				flag = 1;
+			array[count] = array[x];
+			if (array[x] == swap)
+				flag = 1;
+			array[x] = swap;
+			if (flag != 1)
+				print_array(array, size);
 		}
-		else
-		{
-			x++;
-		}
-		check = count;
+		x++;
+		flag = 0;
 	}
 }
