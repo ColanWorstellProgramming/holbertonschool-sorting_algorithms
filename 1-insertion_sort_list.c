@@ -39,7 +39,6 @@ void insertion_sort_list(listint_t **list)
 			place2->next = place;
 			hold = hold->prev;
 			print_list(*list);
-
 			if (hold->prev && hold->prev->n > hold->n)
 			{
 				hold = hold->prev;
