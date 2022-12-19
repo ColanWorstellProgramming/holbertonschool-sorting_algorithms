@@ -1,4 +1,5 @@
 #include "sort.h"
+#include <stdio.h>
 
 /**
  * selection_sort - sorts array bubble wise
@@ -7,43 +8,46 @@
  * Return: void
  */
 
-void selection_sort(int *array, size_t size);
+void selection_sort(int *array, size_t size)
 {
-
 	size_t i = 0;
-	int x, hold;
+	int swap = 0;
+	int count = -1;
+	size_t x = 0;
+	int check = 0;
 
-	if (size > 1)
+	while (x < size)
 	{
 		for (i = 0; i < size; i++)
 		{
-			if (array[i + 1] != '\0')
-			{
-				x = array[i + 1];
-
-				if (array[i] > x)
-				{
-					if (array[i + 1] != '\0')
-					{
-						hold = array[i + 1];
-						array[i + 1] = array[i];
-						array[i] = hold;
-					}
-					print_array(array, size);
-				}
-			}
+			swap = swap + array[i];
 		}
-
-		for (i = 0; i < size; i++)
+		for (i = x; i < size; i++)
 		{
-			if (array[i + 1] != '\0')
+			if (array[i] < swap)
 			{
-				if (array[i + 1] < array[i])
-				{
-					bubble_sort(array, size);
-					break;
-				}
+				swap = array[i];
+				count = i;
 			}
 		}
+		
+		if (count != check)
+		{	
+			if (count != -1)
+			{
+				array[count] = array[x];
+				array[x] = swap;
+
+				if (x != size-1)
+					print_array(array, size);
+
+				x++;
+			}
+		}
+		else
+		{
+			x++;
+		}
+		check = count;
 	}
 }
