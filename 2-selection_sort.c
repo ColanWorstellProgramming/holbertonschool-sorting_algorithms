@@ -16,6 +16,9 @@ void selection_sort(int *array, size_t size)
 	size_t x = 0;
 	int check = 0;
 
+	if (!array || size < 2)
+		return;
+
 	while (x < size)
 	{
 		for (i = 0; i < size; i++)
@@ -30,17 +33,14 @@ void selection_sort(int *array, size_t size)
 				count = i;
 			}
 		}
-		
 		if (count != check)
-		{	
+		{
 			if (count != -1)
 			{
 				array[count] = array[x];
 				array[x] = swap;
-
-				if (x != size-1)
+				if (x != size - 1)
 					print_array(array, size);
-
 				x++;
 			}
 		}
