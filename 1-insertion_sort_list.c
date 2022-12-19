@@ -1,54 +1,51 @@
 #include "sort.h"
 
 /**
- * bubble_sort - sorts array bubble wise
- * @array: array to be sorted
- * @size: size of array
+ * insertion_sort_list - sorts array bubble wise
+ * @list: double linked list
  * Return: void
  */
-
 void insertion_sort_list(listint_t **list)
 {
+	listint_t *hold, *place, *place2;
 
-	int x;
-	listint_t *hold;
+	if (!list)
+		return;
+	if (!(*list))
+		return;
+	if (!(*list)->next)
+		return;
 
-	if ((*list) != NULL && (*list)->next != NULL)
+	hold = *list;
+
+	while (hold->next)
 	{
-		while ((*list)->next != NULL)
+		if (hold->n > hold->next->n)
 		{
-			x = (*list)->next->n;
+			place = hold;
+			place2 = hold->next;
+			place2->prev = place->prev;
 
-			if ((*list)->n < x)
+			if (place->prev)
+				place->prev->next = place2;
+			else
+				*list = place2;
+			if (place2->next)
 			{
-				if ((*list)->next != NULL)
-				{
-					hold = (*list)->next;
-					hold->next = (*list)->next->next;
-					hold->prev = (*list)->next->prev;
+				place2->next->prev = place;
+			}
+			place->prev = place2;
+			place->next = place2->next;
+			place2->next = place;
+			hold = hold->prev;
+			print_list(*list);
 
-					(*list)->next = (*list);
-					(*list)->next->prev = (*list)->prev;
-					(*list)->next->next = (*list)->next;
-
-					(*list) = hold;
-					(*list)->prev = hold->prev;
-					(*list)->next = hold->next;
-				}
-				print_list((*list));
+			if (hold->prev && hold->prev->n > hold->n)
+			{
+				hold = hold->prev;
+				continue;
 			}
 		}
-
-		while ((*list)->next != NULL)
-		{
-			if ((*list)->next != NULL)
-			{
-				if ((*list)->next->n > (*list)->n)
-				{
-					insertion_sort_list(list);
-					break;
-				}
-			}
-		}
+		hold = hold->next;
 	}
 }
